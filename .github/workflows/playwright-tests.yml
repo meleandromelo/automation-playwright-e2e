@@ -1,0 +1,31 @@
+name: Playwright E2E
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.15'
+          cache: pip
+      - name: Instalar dependências Python
+        run: python -m pip install -r requirements.txt
+      - name: Instalar Chromium e bibliotecas do sistema
+        run: python -m playwright install --with-deps chromium
+      - name: Executar suíte E2E
+        run: python -m pytest -v
+      - name: Salvar relatórios e evidências
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: results/
+          retention-days: 14
+          if-no-files-found: warn
