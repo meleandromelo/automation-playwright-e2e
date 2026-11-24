@@ -1,4 +1,4 @@
-# Portfólio de QA · Playwright E2E
+#  Playwright E2E
 
 [![Playwright E2E](https://github.com/meleandromelo/qa-portfolio-playwright-e2e/actions/workflows/playwright-tests.yml/badge.svg?branch=main)](https://github.com/meleandromelo/qa-portfolio-playwright-e2e/actions/workflows/playwright-tests.yml)
 
